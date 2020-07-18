@@ -16,7 +16,7 @@ public class EmployeeWage {
 		int days_in_month=20;
 		int working_hours=0;
 		int working_days=0;
-		while(working_hours<=100 && working_days<=20)
+		while(working_hours<100 && working_days<20)
 		{
 		  working_days++;
 		  int empCheck=(int)Math.floor(Math.random()*10)%3;
@@ -32,7 +32,7 @@ public class EmployeeWage {
 		  }
 		}
 		System.out.println("No.of working days:"+working_days);
-		System.out.println("No.of working days:"+working_hours);
+		System.out.println("No.of working hours:"+working_hours);
 		System.out.println("Salary for month is:"+salary);
 	}
 
