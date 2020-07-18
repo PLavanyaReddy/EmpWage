@@ -25,21 +25,6 @@ public class EmployeeWage {
 			default:System.out.println("Employee is absent");
 		
 		}
-		/*if(empCheck == IS_FULL_TIME)
-		{
-			System.out.println("Employee is present for full time");
-			salary=Wage_per_hour*full_day_hour;
-		}
-		else if(empCheck == IS_PART_TIME)
-		{
-			System.out.println("Employee is present for part time");
-			salary=Wage_per_hour*part_time_hour;
-		}
-		else
-		{
-			System.out.println("Employee is absent");
-			salary=0;
-		}*/
 		System.out.println("Salary is:"+salary);
 	}
 
