@@ -1,3 +1,9 @@
+interface EmpWage
+{
+	void addCompanyEmpWage(String companyName,int wage_per_hour,int max_working_days,int max_working_hours);
+	void computeEmpWage();
+	public int wageComputation(CompanyEmpWage companyEmpWage);
+}
 class CompanyEmpWage
 {
 	String companyName;
@@ -21,7 +27,7 @@ class CompanyEmpWage
 		return "Total emp wage for "+companyName+" is "+totalSalary;
 	}
 }
-public class EmployeeWage {
+public class EmployeeWage implements EmpWage{
 	public static final int IS_FULL_TIME=1;
 	public static final int IS_PART_TIME=2;
 	int numOfCompany=0;
@@ -33,11 +39,11 @@ public class EmployeeWage {
 	{
 		companyEmpWageArray=new CompanyEmpWage[5];
 	}
-	private void addCompanyEmpWage(String companyName,int wage_per_hour,int max_working_days,int max_working_hours)
+	public void addCompanyEmpWage(String companyName,int wage_per_hour,int max_working_days,int max_working_hours)
 	{
 		companyEmpWageArray[numOfCompany++]=new CompanyEmpWage(companyName,wage_per_hour,max_working_days,max_working_hours);
 	}
-	void computeEmpWage()
+	public void computeEmpWage()
 	{
 		for(int i=0;i<numOfCompany;i++)
 		{
@@ -45,7 +51,7 @@ public class EmployeeWage {
 			System.out.println(companyEmpWageArray[i]);
 		}
 	}
-	int wageComputation(CompanyEmpWage companyEmpWage)
+	public int wageComputation(CompanyEmpWage companyEmpWage)
 	{
 		int days=0;
 		int full_day_hour=8;
