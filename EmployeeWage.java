@@ -12,12 +12,14 @@ class CompanyEmpWage
 	int max_working_days;
     int max_working_hours;
     int totalSalary=0;
+    int[] dailywage_array;
     public CompanyEmpWage(String companyName,int wage_per_hour,int max_working_days,int max_working_hours)
     {
     	this.companyName=companyName;
 		this.wage_per_hour=wage_per_hour;
 		this.max_working_days=max_working_days;
 		this.max_working_hours=max_working_hours;
+		dailywage_array=new int[max_working_days+1];
     }
     public void setEmpWage(int totalEmpWage)
     {
@@ -78,7 +80,8 @@ public class EmployeeWage implements EmpWage{
 			                  break;
 			default:salary=0;
 		  }
-		  System.out.println(days+"\t"+salary+"\t\t"+hours);
+		  companyEmpWage.dailywage_array[days]=salary;
+		  System.out.println(days+"\t"+companyEmpWage.dailywage_array[days]+"\t\t"+hours);
 		}
 		return (hours*companyEmpWage.wage_per_hour);
 	}
