@@ -36,17 +36,21 @@ public class EmployeeWage implements EmpWage{
 	int numOfCompany=0;
 	//CompanyEmpWage[] companyEmpWageArray;
 	ArrayList<CompanyEmpWage> companyEmpWageAL;
+	HashMap<String,CompanyEmpWage> getWage;
 	/**
 	 * @param args
 	 */
 	public EmployeeWage()
 	{
 		companyEmpWageAL=new ArrayList<CompanyEmpWage>();
+		getWage=new HashMap<String,CompanyEmpWage>();
 	}
 	public void addCompanyEmpWage(String companyName,int wage_per_hour,int max_working_days,int max_working_hours)
 	{
-		companyEmpWageAL.add(new CompanyEmpWage(companyName,wage_per_hour,max_working_days,max_working_hours));
+		CompanyEmpWage companyEmpWage=new CompanyEmpWage(companyName,wage_per_hour,max_working_days,max_working_hours);
 		//companyEmpWageArray[numOfCompany++]=new CompanyEmpWage(companyName,wage_per_hour,max_working_days,max_working_hours);
+		companyEmpWageAL.add(companyEmpWage);
+		getWage.put(companyName,companyEmpWage);
 		numOfCompany++;
 	}
 	public void computeEmpWage()
@@ -54,6 +58,7 @@ public class EmployeeWage implements EmpWage{
 		for(int i=0;i<numOfCompany;i++)
 		{
 			companyEmpWageAL.get(i).setEmpWage(wageComputation(companyEmpWageAL.get(i)));
+			
 			System.out.println(companyEmpWageAL.get(i));
 		}
 	}
@@ -85,7 +90,10 @@ public class EmployeeWage implements EmpWage{
 		}
 		return (hours*companyEmpWage.wage_per_hour);
 	}
-	
+	public int getTotalWage(String companyName)
+	{
+		return getWage.get(companyName).totalSalary;
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		System.out.println("Welcome to Employee Wage Computation program");
@@ -93,6 +101,8 @@ public class EmployeeWage implements EmpWage{
 		empwage.addCompanyEmpWage("DMART",20,20,100);
 		empwage.addCompanyEmpWage("Reliance",30,25,95);
 		empwage.computeEmpWage();
+		System.out.println("Total wage for DMART company:"+empwage.getTotalWage("DMART"));
+		System.out.println("Total wage for Reliance company:"+empwage.getTotalWage("Reliance"));
 	}
 
 }
